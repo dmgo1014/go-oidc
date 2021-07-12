@@ -101,6 +101,10 @@ func NewProvider(ctx context.Context, issuer string) (*Provider, error) {
 		return nil, fmt.Errorf("unable to read response body: %v", err)
 	}
 
+	fmt.Printf("body: %v\n", string(body))
+	fmt.Printf("headers: %+v\n", resp.Header)
+	fmt.Printf("status code: %+v\n", resp.StatusCode)
+
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("%s: %s", resp.Status, body)
 	}
